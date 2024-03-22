@@ -53,7 +53,7 @@ void play(u8 pich, u16 duration_in_ms, u8 instrument, u8 volume)
 	SINV = data;
 	// TODO: This is really necessarry ?
 	// Wait until sintetizer clock
-	// while(SINC == 0) {}
+	while(SINC == 0) {}
 }
 
 #define MUSIC_SIZE 26
