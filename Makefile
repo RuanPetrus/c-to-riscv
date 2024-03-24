@@ -15,21 +15,24 @@ MACH=-march=$(MARCH) -mabi=$(MABI)
 LDFLAGS=-nostdlib -fno-exceptions -nostartfiles -ffreestanding -nodefaultlibs -T $(LINKER_FILE) -Wl,-Map=$(BUILD_DIR)/final.map -Wl,--no-relax
 
 # C flags
-CFLAGS= -Wall -Wextra -Wshadow -std=c99  -O0
+CFLAGS= -Wall -Wextra -Wshadow -std=c99 -O2 -g
 
 # Elf executable name
 TARGET=$(ELF_DIR)/music.elf
 
 # Add your sources here
-SOURCES=music.c \
-		$(PLATFORM_DIR)/cr0.c
+SOURCES=music.c
 
 OBJ_NAMES=$(SOURCES:.c=.o)
 OBJECTS=$(patsubst %,$(OBJ_DIR)/%,$(OBJ_NAMES))
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS) $(OBJ_DIR)/cr0.o
 	@mkdir -p $(dir $@)
 	$(CC) $(MACH) $(LDFLAGS) -o $@ $^
+
+$(OBJ_DIR)/cr0.o: $(PLATFORM_DIR)/cr0.c
+	@mkdir -p $(dir $@)
+	$(CC) $(MACH) -Wall -Wextra -Wshadow -std=c99 -O0 -c -o $@ $^
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)

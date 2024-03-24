@@ -4,7 +4,7 @@ ENTRY(_enter)
 
 MEMORY{
         TEXT(X)     : ORIGIN =0x00400000 , LENGTH = 64k
-        DATA(RW)    : ORIGIN =0x10010000 , LENGTH = 60k
+        DATA(RW)    : ORIGIN =0x10010000 , LENGTH = 160k
 }
 
 /* Section Definitions */
@@ -39,9 +39,9 @@ SECTIONS
 
     .stack : {
 	__stack_start = .;
-	. += __stack_size; /* Hart 0 */
-	__stack_pointer$ = .;
+	. += __stack_size;
 	. = ALIGN(4);
+	__stack_pointer$ = .;
 	__stack_end = .;
     } > DATA
 
