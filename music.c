@@ -128,7 +128,6 @@ i32 main()
 			count = (count + 2) % MUSIC_SIZE;
 			last_time = current_time;
 			last_duration = duration;
-
 			play(note, duration, 4, 40);
 		}
 	}

@@ -21,18 +21,15 @@ CFLAGS= -Wall -Wextra -Wshadow -std=c99 -O2 -g
 TARGET=$(ELF_DIR)/music.elf
 
 # Add your sources here
-SOURCES=music.c
+SOURCES=music.c \
+		$(PLATFORM_DIR)/cr0.c	
 
 OBJ_NAMES=$(SOURCES:.c=.o)
 OBJECTS=$(patsubst %,$(OBJ_DIR)/%,$(OBJ_NAMES))
 
-$(TARGET): $(OBJECTS) $(OBJ_DIR)/cr0.o
+$(TARGET): $(OBJECTS)
 	@mkdir -p $(dir $@)
 	$(CC) $(MACH) $(LDFLAGS) -o $@ $^
-
-$(OBJ_DIR)/cr0.o: $(PLATFORM_DIR)/cr0.c
-	@mkdir -p $(dir $@)
-	$(CC) $(MACH) -Wall -Wextra -Wshadow -std=c99 -O0 -c -o $@ $^
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
