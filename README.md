@@ -1,12 +1,12 @@
-
-# C to Risc V
-This is template for compiling C to a fpga RISC V processor
+# C to Risc
+This project aims to be a interface between C and UnB custom RISC-V processor.
+Take a look at file *main.c* inside *src* folder to see an example
 
 # Dependencies
-You need riscv64-unknown-elf-gcc, and python3
+You need `riscv64-unknown-elf-gcc`, and `python3`
 
 # How to run
-Just run make dump, this will compile the project and generate both .mif files and .bin file inside build
+Just run `make dump`, this will compile the project and generate both .mif files and .bin file inside build
 
-# How to change source code
-Just change the sources files inside the make file
+# Adding your source code to make file
+The simple way is to add your files src files to the the variable _SOURCES_ inside Makefile
