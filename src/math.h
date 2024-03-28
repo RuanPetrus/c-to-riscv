@@ -10,6 +10,7 @@ TODO: Add vector functions
  
 // Clamps val to [l, r] interval
 f32 clamp(f32 val, f32 l, f32 r);
+i32 clampi32(i32 val, i32 l, i32 r);
 
 u32 nbits_mask(u32 num_bytes);
 
